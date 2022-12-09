@@ -14,11 +14,30 @@ section.board {
   grid-template-rows: repeat(3, 10vmin);
   grid-template-columns: repeat(3, 10vmin);
   grid-gap: 0vmin;
+  margin: 0 auto;
+}
+h1 , h2#message{
+  margin: 20px auto;
+  
 }
 
 div {
   border: 3px solid black;
-  font-size: 8vmin;
+  font-size: 7vmin;
   text-align: center;
   vertical-align: middle;
+}
+
+.reset-button {
+  background-color: #d9534f; /* red */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 10em;
+  margin: 100px auto;
 }
