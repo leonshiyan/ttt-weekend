@@ -24,7 +24,7 @@ resetBtnEl.addEventListener('click',init)
 /*-------------------------------- Functions --------------------------------*/
 
 function init(){
-  console.log('App fired up')
+  //console.log('App fired up')
   //Fill board with null
   board.fill(null)
   //board = [1, -1, 1, 1, -1, 1, -1, -1, 0]
@@ -33,6 +33,8 @@ function init(){
   turn = -1 //Multiply by -1 to change turn(might need a function to do it?)
   winner = false //No winner at the beginning(set function?)
   tie = false // Tie condition ,true when no null in board(funciton?)
+
+  messageEl.setAttribute('class','')
   render()
 }
 
@@ -48,17 +50,18 @@ function updateBoard(){
       squareEles[i].textContent = ''
     }
   }
-  console.log(board)
+  //console.log(board)
 }
 
 function updateMessage(){
-  
+  const playerMsg = turn == 1? 'X':'O'
   if(!winner && !tie){
-    messageEl.textContent = `It is player ${turn} turn!`
+    messageEl.textContent = `It is player ${playerMsg} turn!`
   }else if(!winner && tie){
     messageEl.textContent = `It is a tie game!`
   }else {
-    messageEl.textContent = `Congratulations, player ${turn} wins!`
+    messageEl.textContent = `Congratulations, player ${playerMsg} wins!`
+    messageEl.setAttribute('class','animate__animated animate__flip')
   }
 }
 

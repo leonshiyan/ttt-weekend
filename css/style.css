@@ -1,5 +1,5 @@
 body {
-    background-color: gray;
+    background-color: #131200;
 	/* Use a system font, if none are available use an available sans-sarif   font */
 	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -16,20 +16,25 @@ section.board {
   grid-gap: 0vmin;
   margin: 0 auto;
 }
-h1 , h2#message{
+h2#message{
   margin: 20px auto;
-  
+  color: #78bc61;
+}
+h1{
+  margin: 20px auto;
+  color:#c0c781;
 }
 
 div {
-  border: 3px solid black;
+  border: 3px solid #c59b76;
   font-size: 7vmin;
   text-align: center;
   vertical-align: middle;
+  color : #c59b76
 }
 
 .reset-button {
-  background-color: #d9534f; /* red */
+  background-color: #e9806e; /* red */
   border: none;
   color: white;
   padding: 15px 32px;
