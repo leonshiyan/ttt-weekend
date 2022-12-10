@@ -20,6 +20,7 @@ const resetBtnEl = document.querySelector('.reset-button')
 /*----------------------------- Event Listeners -----------------------------*/
 boardEl.addEventListener('click',handleClick)
 resetBtnEl.addEventListener('click',init)
+boardEl.addEventListener('animationend', handleAnimationEnd, {once: false});
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -33,12 +34,9 @@ function init(){
   turn = -1 //Multiply by -1 to change turn(might need a function to do it?)
   winner = false //No winner at the beginning(set function?)
   tie = false // Tie condition ,true when no null in board(funciton?)
-
-  messageEl.setAttribute('class','')
+  messageEl.classList.remove('animate__animated','animate__flip')
   render()
 }
-
-
 
 function updateBoard(){
   for (let i = 0; i < board.length; i++) {
@@ -61,7 +59,7 @@ function updateMessage(){
     messageEl.textContent = `It is a tie game!`
   }else {
     messageEl.textContent = `Congratulations, player ${playerMsg} wins!`
-    messageEl.setAttribute('class','animate__animated animate__flip')
+    messageEl.classList.add('animate__animated','animate__flip')
   }
 }
 
@@ -71,8 +69,8 @@ function handleClick (event){
   if (sqId != null){
     sqIdx = parseInt(sqId.slice(2))
   }
-
   if (board[sqIdx] || winner){
+    boardAnimation(event)
     return
   }
   placePiece(sqIdx)
@@ -82,7 +80,14 @@ function handleClick (event){
   render()
   //console.log(sqIdx)
 }
-
+function boardAnimation(event){
+  boardEl.classList.add('animate__animated','animate__headShake')
+}
+function handleAnimationEnd(event){
+  event.stopPropagation();
+  boardEl.classList.remove('animate__animated','animate__headShake');
+  console.log('animation ended')
+}
 function placePiece(idx){
   board[idx] = turn
 }

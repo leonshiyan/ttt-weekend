@@ -17,12 +17,14 @@ section.board {
   margin: 0 auto;
 }
 h2#message{
-  margin: 20px auto;
+  margin: 32px auto;
   color: #78bc61;
+  font-size: 32px;
 }
 h1{
-  margin: 20px auto;
+  margin: 32px auto;
   color:#c0c781;
+  font-size: 64px;
 }
 
 div {
@@ -35,9 +37,9 @@ div {
 
 .reset-button {
   background-color: #e9806e; /* red */
+  color:beige;
   border: none;
-  color: white;
-  padding: 15px 32px;
+  padding: 16px 32px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
