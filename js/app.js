@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 const winningCombos = [
-[0,1,2],[3,4,5],[6,7,9],[0,3,6],
+[0,1,2],[3,4,5],[6,7,8],[0,3,6],
 [1,4,7],[2,5,8],[0,4,8],[2,4,6],
 ]
 
@@ -31,9 +31,9 @@ function init(){
   //board = [1, -1, 1, 1, -1, 1, -1, -1, 0]
 
   //console.log(board)
-  turn = -1 //Multiply by -1 to change turn(might need a function to do it?)
-  winner = false //No winner at the beginning(set function?)
-  tie = false // Tie condition ,true when no null in board(funciton?)
+  turn = -1 ////Multiply by -1 to change turn(might need a function to do it?)
+  winner = false ////No winner at the beginning(set function?)
+  tie = false //// Tie condition ,true when no null in board(funciton?)
   messageEl.classList.remove('animate__animated','animate__flip')
   render()
 }
@@ -73,13 +73,52 @@ function handleClick (event){
     boardAnimation(event)
     return
   }
+  playerMove(sqIdx)
+  setTimeout(() => {
+    computerMove()
+  }, 300)
+  
+  //console.log(sqIdx)
+}
+
+//Add AI movement
+  //  -AI is X (1) at current state
+  //  -happens only after player click
+  //  -find an empty spot to place ,no winning prevention
+  //  -no move if there is a winner and or tie game
+function computerMove(){
+  //const computerIdx = board.findIndex(e => e === null)
+  if(!winner && !tie){
+    let computerIdx = chooseEmptySpot()
+  playerMove(computerIdx)
+  }
+}
+
+function chooseEmptySpot(){
+  let moves = []
+  for (let index = 0; index < board.length; index++) {
+    if(board[index]===null) moves.push(index)
+  }
+  //Select a move
+  let move = moves[Math.floor(Math.random() * moves.length)]
+  return move
+  // if (board[move] === null) {
+  //   // If the move is valid, return it
+  //   return move
+  // } else {
+  //   // If the move is not valid, try again
+  //   return chooseEmptySpot()
+  // }
+}
+
+function playerMove(sqIdx){
   placePiece(sqIdx)
   checkForTie()
   checkForWinner()
   switchPlayerTurn()
   render()
-  //console.log(sqIdx)
 }
+
 function boardAnimation(event){
   boardEl.classList.add('animate__animated','animate__headShake')
 }
