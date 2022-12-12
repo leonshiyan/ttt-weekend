@@ -25,15 +25,12 @@ boardEl.addEventListener('animationend', handleAnimationEnd, {once: false});
 /*-------------------------------- Functions --------------------------------*/
 
 function init(){
-  //console.log('App fired up')
-  //Fill board with null
-  board.fill(null)
-  //board = [1, -1, 1, 1, -1, 1, -1, -1, 0]
 
-  //console.log(board)
-  turn = -1 ////Multiply by -1 to change turn(might need a function to do it?)
-  winner = false ////No winner at the beginning(set function?)
-  tie = false //// Tie condition ,true when no null in board(funciton?)
+  board.fill(null)
+
+  turn = -1 
+  winner = false 
+  tie = false 
   messageEl.classList.remove('animate__animated','animate__flip')
   render()
 }
@@ -48,7 +45,6 @@ function updateBoard(){
       squareEles[i].textContent = ''
     }
   }
-  //console.log(board)
 }
 
 function updateMessage(){
@@ -78,7 +74,6 @@ function handleClick (event){
     computerMove()
   }, 300)
   
-  //console.log(sqIdx)
 }
 
 //Add AI movement
@@ -87,7 +82,6 @@ function handleClick (event){
   //  -find an empty spot to place ,no winning prevention
   //  -no move if there is a winner and or tie game
 function computerMove(){
-  //const computerIdx = board.findIndex(e => e === null)
   if(!winner && !tie){
     let computerIdx = chooseEmptySpot()
   playerMove(computerIdx)
@@ -102,13 +96,6 @@ function chooseEmptySpot(){
   //Select a move
   let move = moves[Math.floor(Math.random() * moves.length)]
   return move
-  // if (board[move] === null) {
-  //   // If the move is valid, return it
-  //   return move
-  // } else {
-  //   // If the move is not valid, try again
-  //   return chooseEmptySpot()
-  // }
 }
 
 function playerMove(sqIdx){
